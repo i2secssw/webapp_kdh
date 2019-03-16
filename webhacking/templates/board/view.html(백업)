@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" align='center'>
+		<h1>게시글 작성</h1>
+{% block js%}
+	<form name="bbs_view" method="" action="" onsubmit="" >
+
+		<table  align='center'>	
+    		<tr>
+				<td>작성자</td>
+				<td>&nbsp;{{bbs_writer}}</td>
+			</tr>
+    		<tr>
+     			<td>제 목</td>
+     			<!--<td><input type='text' name='bbs_title' size='20' maxlength='40'></td>-->
+     			{{bbs_writer}}
+     			<!--<td><textarea name='bbs_title' rows="1" cols="120" maxlength='40' readonly>{{bbs_title}}</textarea></td>-->
+    		</tr>
+    		<tr>
+     			<td>내 용</td>
+     			<!--<td><textarea name='bbs_content' rows ="20" cols="120" readonly>{{bbs_content}}</textarea></td>-->
+     			{{bbs_content}}    			
+    		</tr>
+    		<tr>
+     			<td colspan="2">
+     			<div align="center">
+         		<input type="button" value="목록" onclick="location.href='/'"></div>
+         		<!--<input type="submit" value="수정" >&nbsp;&nbsp;-->
+         		<!--<input type="submit" value="삭제" >&nbsp;&nbsp;-->
+         		</div>
+     			</td>
+    		</tr> 
+		</table>
+	
+	</form> 
+{% endblock %}
+</div>
+{% endblock %}

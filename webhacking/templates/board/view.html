@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" align='center'>
+		<h1>게시글 작성</h1>
+	<form name="bbs_view" method="" action="" onsubmit="" >
+
+		<table  align='center'>	
+    		<tr>
+				<td>작성자</td>
+				{{bbs_writer}}
+			</tr>
+    		<tr>
+     			<td>제 목</td>
+     			{{bbs_title}}
+    		</tr>
+    		<tr>
+     			<td>내 용</td>
+     			{{bbs_content}}
+    		</tr>
+
+    		<tr>
+     			<td colspan="2">
+     			<div align="center">
+         		<input type="button" value="목록" onclick="location.href='/'"></div>
+         		<!--<input type="submit" value="수정" >&nbsp;&nbsp;-->
+         		<!--<input type="submit" value="삭제" >&nbsp;&nbsp;-->
+         		</div>
+     			</td>
+    		</tr> 
+		</table>
+	
+	</form> 
+</div>
+{% endblock %}

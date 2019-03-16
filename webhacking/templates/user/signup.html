@@ -1,0 +1,295 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="icon" href="Favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>회원가입</title>
+</head>
+<body>
+
+<script>
+    function validform() {
+
+        var a = document.forms["my-form"]["user_id"].value;
+        var b = document.forms["my-form"]["user_pass"].value;
+        var c = document.forms["my-form"]["user_pass2"].value;
+        var d = document.forms["my-form"]["user_name"].value;
+        var e = document.forms["my-form"]["user_registration_number"].value; 
+        var f = document.forms["my-form"]["user_addr"].value;
+        var g = document.forms["my-form"]["user_mail"].value;
+        var h = document.forms["my-form"]["user_birth_year"].value;  
+        var i = document.forms["my-form"]["user_birth_month"].value; 
+        var j = document.forms["my-form"]["user_birth_day"].value;   
+        
+        var idReg = /^[A-za-z0-9]/g
+        var regNum = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-4][0-9]{6}$/
+        var pwlength = /^[A-za-z0-9]{8,16}/g
+
+
+        if (a==null || a=="")
+        {
+            alert("아이디를 입력해주세요.");
+            return false;
+        }
+        else if (b==null || b=="")
+        {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        }
+        else if (c==null || c=="")
+        {
+            alert("비밀번호 확인을 입력해주세요.");
+            return false;
+        }
+        else if (d==null || d=="")
+        {
+            alert("이름을 입력해주세요.");
+            return false;
+        }
+        else if (e==null || e=="")
+        {
+            alert("주민등록번호를 입력해주세요.");
+            return false;
+        }
+        else if (f==null || f=="")
+        {
+            alert("주소를 입력해주세요.");
+            return false;
+        }
+        else if (g==null || g=="")
+        {
+            alert("메일을 입력해주세요.");
+            return false;
+        }
+        else if (!(b==c))
+        {
+            alert("입력하신 비밀번호 불일치, 비밀번호를 확인해주세요.");
+            return false;
+        }
+        else if(!regNum.test(e)){
+            alert('올바른 주민등록번호를 입력하세요.');
+            return false;
+        }
+
+        else if(!idReg.test(a)){
+            alert('아이디는 영문숫자로만 사용해주세요.');
+            return false;
+        }
+        else if(!pwlength.test(b)){
+            alert('패스워드를 8~16 영문숫자를 이용해주세요.');
+            return false;
+        }
+
+    }    
+</script>
+
+
+<main class="my-form">
+<div class="cotainer">
+<div class="row justify-content-center">
+<div class="col-md-8">
+        <div class="card">
+            <div class="card-header">회원가입</div>
+            <div class="card-body">
+                <form name="my-form" onsubmit="return validform()" action="/signup_chk" method="POST">
+
+                    <div class="form-group row">
+                        <label for="email_address" class="col-md-4 col-form-label text-md-right">아이디</label>
+                        <div class="col-md-6">
+                            <input type="text" id="user_id" class="form-control" name="user_id" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="user_name" class="col-md-4 col-form-label text-md-right">비밀번호</label>
+                        <div class="col-md-6">
+                            <input type="password" id="user_pass" class="form-control" name="user_pass" placeholder="8 ~ 16 영문숫자조합">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="user_name" class="col-md-4 col-form-label text-md-right">비밀번호 확인</label>
+                        <div class="col-md-6">
+                            <input type="password" id="user_pass2" class="form-control" name="user_pass2" placeholder="8 ~ 16 영문숫자조합">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="full_name" class="col-md-4 col-form-label text-md-right">이름</label>
+                        <div class="col-md-6">
+                            <input type="text" id="user_name" class="form-control" name="user_name" placeholder="ex) 홍길동">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="permanent_address" class="col-md-4 col-form-label text-md-right">주민등록번호</label>
+                        <div class="col-md-6">
+                            <input type="password" id="user_registration_number" class="form-control" name="user_registration_number" placeholder="ex) 901020-1234567">
+                        </div>
+                    </div>
+
+                    <!--생년월일 start-->
+                    <div class="form-group row">
+                      <label for="permanent_address" class="col-md-4 col-form-label text-md-right">생년월일</label>
+                      <div class="col-md-6">
+
+                    <td><select name="user_birth_year">
+                            <option value="1967" selected>1967</option>
+                            <option value="1968" selected>1968</option>
+                            <option value="1969" selected>1969</option>
+                            <option value="1970" selected>1970</option>
+                            <option value="1971" selected>1971</option>
+                            <option value="1972" selected>1972</option>
+                            <option value="1973" selected>1973</option>
+                            <option value="1974" selected>1974</option>
+                            <option value="1975" selected>1975</option>
+                            <option value="1976" selected>1976</option>
+                            <option value="1977" selected>1977</option>
+                            <option value="1978" selected>1978</option>
+                            <option value="1979" selected>1979</option>
+                            <option value="1980" selected>1980</option>
+                            <option value="1981" selected>1981</option>
+                            <option value="1982" selected>1982</option>
+                            <option value="1983" selected>1983</option>
+                            <option value="1984" selected>1984</option>
+                            <option value="1985" selected>1985</option>
+                            <option value="1986" selected>1986</option>
+                            <option value="1987" selected>1987</option>
+                            <option value="1988" selected>1988</option>
+                            <option value="1989" selected>1989</option>
+                            <option value="1990" selected>1990</option>
+                            <option value="1991" selected>1991</option>
+                            <option value="1992" selected>1992</option>
+                            <option value="1993" selected>1993</option>
+                            <option value="1994" selected>1994</option>
+                            <option value="1995" selected>1995</option>
+                            <option value="1996" selected>1996</option>
+                            <option value="1997" selected>1997</option>
+                            <option value="1998" selected>1998</option>
+                            <option value="1999" selected>1999</option>
+                            <option value="2000" selected>2000</option>
+                            <option value="2001" selected>2001</option>
+                            <option value="2002" selected>2002</option>
+                            <option value="2003" selected>2003</option>
+                            <option value="2004" selected>2004</option>
+                            <option value="2005" selected>2005</option>
+                            <option value="2006" selected>2006</option>
+                            <option value="2007" selected>2007</option>
+                            <option value="2008" selected>2008</option>
+                            <option value="2009" selected>2009</option>
+                            <option value="2010" selected>2010</option>
+                            <option value="2011" selected>2011</option>
+                            <option value="2012" selected>2012</option>
+                            <option value="2013" selected>2013</option>
+                            <option value="2014" selected>2014</option>
+                            <option value="2015" selected>2015</option>
+                            <option value="2016" selected>2016</option>
+                            <option value="2017" selected>2017</option>
+                            <option value="2018" selected>2018</option>
+                        </select>
+                        년
+                        <select name="user_birth_month">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        월
+                        <select name="user_birth_day">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                        일
+                        </td>
+                          </div>
+                    </div>
+                    <!-- 생년월일 end-->
+                    <input type="hidden" name="birth" id='birth'value=user_birth_year>
+
+                    <div class="form-group row">
+                          <label for="permanent_address" class="col-md-4 col-form-label text-md-right">주소</label>
+                          <div class="col-md-6">
+                              <input type="text" id="user_addr" class="form-control" name="user_addr" placeholder="ex) 서울특별시 금천구">
+                          </div>
+                    </div>
+
+                    <div class="form-group row">
+                          <label for="permanent_address" class="col-md-4 col-form-label text-md-right">E-Mail</label>
+                          <div class="col-md-6">
+                              <input type="text" id="user_mail" class="form-control" name="user_mail" placeholder="ex) abc@example.com">
+                          </div>
+                    </div>
+
+                    <div class="col-md-6 offset-md-4" align="right"> <!-- btn btn-success-->
+                        <button type="submit" class="btn btn-success">
+                        등록
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='/'">
+                        취소 
+                        </button>
+                    </div>
+                    </div>
+                </form>
+        </div>
+        </div>
+</div>
+</div>
+</div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

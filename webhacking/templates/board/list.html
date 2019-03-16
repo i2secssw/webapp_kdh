@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<blockquote>
+<h3>{{session['userId']}}님. 안녕하세요</h3>
+</blockquote>
+
+<div class="container" align='center'>
+
+  <h1>게시글 리스트</h1>
+  <form>
+    
+    {{searchkeyword}}
+        
+  <table class="table table-hover">
+
+    <thead>
+
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>작성 날짜</th>
+        <th>조회</th>
+      </tr>
+      
+    </thead>
+
+    	{% for user in list %}
+        <tr>
+	        <td>{{user[0]}}</td> <!--글 번호 0-->
+          <td><a href="/main/view?bbs_no={{user[0]}}">{{user[1]}}</a></td> <!--글 제목 1-->
+	        <td>{{user[3]}}</td> <!--글 작성자 3-->
+	        <td>{{user[4]}}</td> <!--글 작성날짜 4-->
+	        <td>&nbsp&nbsp{{user[5]}}</td> <!--조회 수 -->
+        </tr>
+		{% endfor %}
+
+  </table>
+  </form>
+  <form action='/main/list' method='post'>
+      
+      <SELECT name='column'>
+        <OPTION value='bbs_title'>제목</OPTION>
+        <OPTION value='bbs_content'>내용</OPTION>
+      </SELECT>
+
+      <input type='text' name='keyword' value=''>
+      <button type='submit'>검색</button>  
+  </form>
+  <p><a href="/main/list">목록</a> &nbsp&nbsp <a href="/main/write">게시글 등록</a> &nbsp&nbsp <a href="/myinfo_revision">회원정보수정</a> &nbsp&nbsp <a href="/logout">로그아웃</a></p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" align='center'>
+		<h1>게시글 작성</h1>
+		
+	<form name="bbs_write" method="post" action="/write_chk" onsubmit="" >
+
+		<table  align='center'>	
+    		<tr>
+				<td>작성자</td>
+				<td>{{session['userId']}}</td>
+				<input type='hidden' name='bbs_writer' value={{session['userId']}}>
+			</tr>
+    		<tr>
+     			<td>제 목</td>
+     			<!--<td><input type='text' name='bbs_title' size='20' maxlength='40'></td>-->
+     			<td><textarea name='bbs_title' rows="1" cols="120" maxlength='40'></textarea></td>
+    		</tr>
+    		<tr>
+     			<td>내 용</td>
+     			<td><textarea name='bbs_content' rows ="20" cols="120"></textarea></td>
+    		</tr>
+    		<tr>
+     			<td>비밀번호</td> 
+     			<td><input type='password' name='bbs_pass' maxlength="4" size="4">(4글자)</td>
+    		</tr>
+    		<tr>
+     			<td colspan="2">
+     			<div align="center">
+     			<!--<p><a href="#">등록</a> &nbsp&nbsp <a href="/">취소</a></p>-->
+     			<input type="submit" value="등록" >&nbsp;&nbsp;
+         		<input type="button" value="뒤로" onclick="location.href='/'"></div>
+         		</div>
+     			</td>
+    		</tr> 
+		</table>
+	
+	</form> 
+
+</div>
+{% endblock %}
